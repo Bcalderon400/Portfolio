@@ -95,10 +95,11 @@
         margin-left: 50px;
         position: absolute;
         bottom: 10%;
-        font-size: .7em;
+        font-size: .85em;
+        transform: rotate(-90deg);
         text-transform: uppercase;
         cursor: pointer;
-        border-right: 1px solid #ca3e47;
+        border-bottom: 1px solid #ca3e47;
         font-family: 'Chakra Petch', sans-serif;
         font-weight: 400;
     }

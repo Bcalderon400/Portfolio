@@ -9,4 +9,5 @@ $(document).ready(function() {
     $('.proj').click(function() {
         $('.carousel').toggle(1500)
     })
+
 });
