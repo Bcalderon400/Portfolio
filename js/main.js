@@ -200,39 +200,35 @@
 	------------------------------------------------------ */
 
   /* local validation */
-  $("#contactForm").validate({
-    /* submit via ajax */
-    submitHandler: function(form) {
-      var sLoader = $("#submit-loader");
+  $(".submit").click(function(event) {
+    console.log("clicked button");
 
-      $.ajax({
-        type: "POST",
-        url: "inc/sendEmail.php",
-        data: $(form).serialize(),
-        beforeSend: function() {
-          sLoader.fadeIn();
-        },
-        success: function(msg) {
-          // Message was sent
-          if (msg == "OK") {
-            sLoader.fadeOut();
-            $("#message-warning").hide();
-            $("#contactForm").fadeOut();
-            $("#message-success").fadeIn();
-          }
-          // There was an error
-          else {
-            sLoader.fadeOut();
-            $("#message-warning").html(msg);
-            $("#message-warning").fadeIn();
-          }
-        },
-        error: function() {
-          sLoader.fadeOut();
-          $("#message-warning").html("Something went wrong. Please try again.");
-          $("#message-warning").fadeIn();
-        }
-      });
+    var name = $("#contactName").val();
+    var email = $("#contactEmail").val();
+    var subject = $("#contactSubject").val();
+    var message = $("#contactMessage").val();
+    var statusElm = $("#message-warning");
+    statusElm.empty();
+
+    if (email.length > 5 && email.includes("@") && email.includes(".")) {
+      statusElm.append("<div>Email is valid</div>");
+    } else {
+      event.preventDefault();
+      statusElm.append("<div>Email is not valid</div>");
+    }
+
+    if (subject.length >= 2) {
+      statusElm.append("<div>Subject is valid</div>");
+    } else {
+      event.preventDefault();
+      statusElm.append("<div>Subject is not valid</div>");
+    }
+
+    if (message.length >= 10) {
+      statusElm.append("<div>Message is valid</div>");
+    } else {
+      event.preventDefault();
+      statusElm.append("<div>Message is not valid</div>");
     }
   });
 
