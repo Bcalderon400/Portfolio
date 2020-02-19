@@ -1829,11 +1829,13 @@ header .top-bar {
 }
 
 .intro-info img {
-  height: 9rem;
-  width: 9rem;
+  height: 18rem;
+  width: 22rem;
   border-radius: 50%;
-  margin: 0.9rem 0 0 0;
-  float: left;
+  margin: 0 0 5rem 0;
+
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  transform: rotate(-90deg);
 }
 
 .intro-info .lead {
